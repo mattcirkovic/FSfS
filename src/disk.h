@@ -1,4 +1,5 @@
 const int magic_number = 0xhd3d42056;
+const block_size = 4096;
 
 struct super_block
 {
