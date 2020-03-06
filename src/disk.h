@@ -1,28 +1,28 @@
-const int magic_number = 0xhd3d42056;
-const block_size = 4096;
+#include <string>
 
-struct super_block
-{
+const int MAGIC_NUMBER = 123456;
+const int BLOCK_SIZE = 4096;
+
+struct Super_block{
 	int magic_number;
-	int blocks; //total number of blocks
-	int inode_blocks; //number of blocks set aside for inode
-	int inodes; // total number of inodes within block
-}
+	int blocks; //number of blocks
+};
 
-struct inode{ //store file metadata
-	int type;
-	int uid;
-	float size;
-	float time;
-	float ctime;
-	float mtime;
-	float blocks;
-}
+struct partition{
+	int begin, end;
+};
 
-struct data_map{
-	//could be either bitmap or linked list
-}
+class Disk{
+	public:
+		Super_block super_block;
+		string name;
+		int blocks;
+		Disk(string, int);
+};
 
-struct inode_bitmap{
-
+Disk::Disk(string disk_name, int block_num){
+	name = disk_name;
+	blocks = block_num;
+	super_block.magic_number = MAGIC_NUMBER;
+	super_block.blocks = block_num;
 }
