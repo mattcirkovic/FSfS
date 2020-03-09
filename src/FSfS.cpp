@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
   Disk disk("newdisk", 10);
-  cout << disk.name << " has " << disk.blocks << " blocks.";
+  cout << disk.name << " has " << disk.super_block.blocks << " blocks.";
   system("pause");
   return 0;
 }
