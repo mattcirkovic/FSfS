@@ -20,8 +20,9 @@ class File{
 			inode.name = "*.temp";
 			inode.size = 1024;
 		}
-		File(std::string f_name, int size){
+		File(std::string f_name, int _size){
 			inode.name = f_name;
 			inode.magic_number = MAGIC_NUMBER;
+			inode.size = _size;
 		}
 };

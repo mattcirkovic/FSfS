@@ -32,7 +32,7 @@ void init(){
     cout << "==============================" << endl;
 }
 
-void action(string response, Directory directory){
+void action(string response, Directory &directory){
     if (response == "help"){
         cout << endl;
         cout << "help is here" << endl;
@@ -40,22 +40,18 @@ void action(string response, Directory directory){
     }
     else if (response == "ls"){
 		cout << endl;
-		int i=0;
-		while (directory.files[i].inode.name != "*.temp"){
-			cout << directory.files[i].inode.name;
-			i++;
-		}
+		cout << directory.files[0].inode.name;
 		cout << endl;
 	}
     else if (response.substr(0,5) == "mkdir"){
 		// TO DO Directory
 	}
-    else if (response.substr(0,6) == "newfile"){
-        directory.files[1] = File(response.substr(8, response.length()-1), 1024);
+    else if (response.substr(0,7) == "newfile"){
+        directory.files[0] = File(response.substr(8, response.length()-1), 1024);
     }
 }
 
-void read(Directory directory){
+void read(Directory &directory){
     string response;
     cout << directory.path;
     getline(cin, response);
