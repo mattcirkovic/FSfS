@@ -7,11 +7,10 @@ using namespace std;
 class Directory{
     public:
         string path;
-        File files[10];
-        static Directory directories[10];
+        string content_names[50];
         Directory(){
             path = "~/";
-        }
+        }      
 };
 
 void init(){
@@ -27,22 +26,24 @@ void init(){
     cout << "==============================" << endl;
 }
 
-void action(string response){
+void action(string response, Directory directory){
     if (response == "help"){
         cout << endl;
         cout << "help is here" << endl;
         cout << endl;
     }
-    else if (response == "ls"){
-
-    }
+    else if (response == "ls"){    } 
+    
+    else if (response.substr(0,5) == "mkdir"){
+		// TO DO Directory
+	}
 }
 
 void read(Directory directory){
     string response;
     cout << directory.path;
     cin >> response;
-    action(response);
+    action(response, directory);
     read(directory);
 }
 
