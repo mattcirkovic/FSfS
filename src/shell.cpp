@@ -1,15 +1,21 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <stdlib.h>
 #include "file.h"
 using namespace std;
+
+const int MAXFILES = 50;
 
 class Directory{
     public:
         string path;
-        string content_names[50];
+        File files[MAXFILES];
         Directory(){
             path = "~/";
+            for (int i=0; i++; i < MAXFILES){
+                files[i] = File();
+            }
         }      
 };
 
@@ -32,17 +38,28 @@ void action(string response, Directory directory){
         cout << "help is here" << endl;
         cout << endl;
     }
-    else if (response == "ls"){    } 
-    
+    else if (response == "ls"){
+		cout << endl;
+		int i=0;
+		while (directory.files[i].inode.name != "*.temp"){
+			cout << directory.files[i].inode.name;
+			i++;
+		}
+		cout << endl;
+	}
     else if (response.substr(0,5) == "mkdir"){
 		// TO DO Directory
 	}
+    else if (response.substr(0,6) == "newfile"){
+        directory.files[1] = File(response.substr(8, response.length()-1), 1024);
+    }
 }
 
 void read(Directory directory){
     string response;
     cout << directory.path;
-    cin >> response;
+    getline(cin, response);
+    if (response == "exit") exit(EXIT_FAILURE);
     action(response, directory);
     read(directory);
 }

@@ -10,10 +10,6 @@ class Inode{
 			name = "temp";
 			magic_number = MAGIC_NUMBER;
 		}
-		Inode(std::string f_name, int size){
-			name = f_name;
-			magic_number = MAGIC_NUMBER;
-		}
 };
 
 class File{
@@ -23,5 +19,9 @@ class File{
 		File(){
 			inode.name = "*.temp";
 			inode.size = 1024;
+		}
+		File(std::string f_name, int size){
+			inode.name = f_name;
+			inode.magic_number = MAGIC_NUMBER;
 		}
 };
