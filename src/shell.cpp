@@ -5,20 +5,6 @@
 #include "file.h"
 using namespace std;
 
-const int MAXFILES = 50;
-
-class Directory{
-    public:
-        string path;
-        File files[MAXFILES];
-        Directory(){
-            path = "~/";
-            for (int i=0; i++; i < MAXFILES){
-                files[i] = File();
-            }
-        }      
-};
-
 void init(){
     cout << "==============================" << endl;
     cout << "=                            =" << endl;
@@ -39,15 +25,16 @@ void action(string response, Directory &directory){
         cout << endl;
     }
     else if (response == "ls"){
-		cout << endl;
-		cout << directory.files[0].inode.name;
-		cout << endl;
+		int i=0;
+        while(directory.contents[i].inode.created != NULL){
+            cout << directory.contents[i].inode.name << "    ";
+        }
 	}
     else if (response.substr(0,5) == "mkdir"){
 		// TO DO Directory
 	}
     else if (response.substr(0,7) == "newfile"){
-        directory.files[0] = File(response.substr(8, response.length()-1), 1024);
+        // TO DO FILE
     }
 }
 
