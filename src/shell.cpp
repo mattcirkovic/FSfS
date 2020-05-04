@@ -3,6 +3,7 @@
 #include <string>
 #include <stdlib.h>
 #include "file.h"
+#include "disk.h"
 using namespace std;
 
 void init(){
@@ -24,11 +25,16 @@ void action(string response, Directory &directory){
         cout << "help is here" << endl;
         cout << endl;
     }
+    else if (response == "diskinit"){
+        Disk disk = Disk();
+        cout << endl;
+        cout << disk.inodeTable[0][0].name << endl;
+    }
     else if (response == "ls"){
-		int i=0;
-        while(directory.contents[i].inode.created != NULL){
-            cout << directory.contents[i].inode.name << "    ";
-        }
+		//int i=0;
+        //while(directory.contents[i].inode.created != NULL){
+          //  cout << directory.contents[i].inode.name << "    ";
+        //}
 	}
     else if (response.substr(0,5) == "mkdir"){
 		// TO DO Directory
