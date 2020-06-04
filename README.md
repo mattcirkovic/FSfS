@@ -1,4 +1,4 @@
 # FSfS
 FSfS (File System from Scratch)
 
-This is an initialization of the README with SSH setup on VM.
+This project contains "simple" file system implementation, and I am currently working on a shell to interact with it.
